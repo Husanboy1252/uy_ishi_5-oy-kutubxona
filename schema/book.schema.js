@@ -1,16 +1,16 @@
 const { Schema,model} = require("mongoose");
 
-const Author = new Schema({
-  full_name: {
+const Book = new Schema({
+  title: {
     type: String,
     required: true,
     unique: true,
   },
-  brith_year: {
+ pages: {
     type: Number,
     required: true,
   },
-  death_year: {
+ published_year: {
     type: String,
     required: false,
     default: null,
@@ -19,7 +19,7 @@ const Author = new Schema({
     type: String,
     required: true,
   },
-  bio: {
+description: {
     type: String,
     required: true,
   },
@@ -31,15 +31,10 @@ const Author = new Schema({
     type: String,
     required: true,
   },
-  creativity: {
+  published_home: {
     type: String,
     required: true,
-  },
-  region: {
-    type: String,
-    required: true,
-  },
-    
+  }    
 },
 {
   versionKey: false,
@@ -47,6 +42,6 @@ const Author = new Schema({
 }
 )
 
-const AuthorSchema = model("Author", Author);
+const BookSchema = model("Book", Book);
 
-module.exports = AuthorSchema;
+module.exports = BookSchema;

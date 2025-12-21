@@ -9,11 +9,25 @@ const getAllAuthors =async (req, res) =>{
 console.log(error.message);
    }
 }
+
+const search =async (req, res) =>{
+   try{
+   const searchingResult = await AuthorSchema.find({
+      full_name:{$regex: name, $options: "i"}
+   }) 
+
+   res.status(200).json(searchingResult)
+   } catch(error){
+console.log(error.message);
+   }
+}
+
+
 const addAuthor =async (req, res) =>{
    try{
-    const{full_name, brith_year, death_year, image_url, bio, creativity, region} = req.body
+    const{full_name, brith_year, death_year, image_url, bio, gener, period, creativity, region} = req.body
 
-    await AuthorSchema.create({full_name, brith_year, death_year, image_url, bio, creativity, region})
+    await AuthorSchema.create({full_name, brith_year, death_year, image_url, bio, gener, period, creativity, region})
     
     res.status(201).json({
         message:"Added author"
@@ -44,7 +58,7 @@ console.log(error.message);
 const updateAuthor =async (req, res) =>{
    try{
     const {id} = req.params
-     const{full_name, brith_year, death_year, image_url, bio, creativity, region} = req.body
+     const{full_name, brith_year, death_year, image_url, bio, gener, period, creativity, region} = req.body
    const author = await AuthorSchema.findById(id)
 
    if(!author){
@@ -55,7 +69,7 @@ const updateAuthor =async (req, res) =>{
 
 
    await AuthorSchema.findByIdAndUpdate(id,
-    {full_name, brith_year, death_year, image_url, bio, creativity, region},
+    {full_name, brith_year, death_year, image_url, bio, gener, period, creativity, region},
     {new:true})
 
 
@@ -79,12 +93,12 @@ const deleteAuthor =async (req, res) =>{
    }
 
 
-   await AuthorSchema.findByIdAndUpdate(id)
+   await AuthorSchema.findByIdAndDelete(id)
   
 
 
    res.status(200).json({
-    message:" author updated"
+    message:" Author deleted"
    })
    } catch(error){
 console.log(error.message);
@@ -94,5 +108,7 @@ module.exports = {
     getAllAuthors,
     addAuthor,
     getOneAuthor,
-    updateAuthor
+    updateAuthor,
+    deleteAuthor,
+    search
 }
