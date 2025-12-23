@@ -38,7 +38,11 @@ description: {
   published_home: {
     type: String,
     required:[ true,"nashiryot uyini kiriting"]
-  }    
+  },
+  // author_id:{
+  //   type: schema.ObjectId,
+  //   ref:""
+  // }  
 },
 {
   versionKey: false,

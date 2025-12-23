@@ -82,7 +82,12 @@ const Author = new Schema(
     versionKey: false,
     timestamps: true,
   }
-);
+)
+
+Author.statics.findByFullName=function(value) {
+  return this.find({full_name : value})
+}
+
 
 const AuthorSchema = model("Author", Author);
 
