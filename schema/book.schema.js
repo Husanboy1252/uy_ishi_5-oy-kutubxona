@@ -5,15 +5,19 @@ const Book = new Schema({
     type: String,
     required: true,
     unique: true,
+      minLength: [,"Kitob nomi kamida 3 ta harifdan iborat bo'lishi kerak "],
+        match: [/^[a-zA-Z]+$/, "Kitob nomi hariflarda kiriting"],
   },
  pages: {
     type: Number,
     required: true,
+    max:"kamida 20 betdan iborat bo'lishi kerak"
   },
  published_year: {
     type: String,
     required: false,
     default: null,
+    max:new Date().getFullYear,
   },
   image_url: {
     type: String,
@@ -25,7 +29,7 @@ description: {
   },
   gener: {
     type: String,
-    required: true,
+    required: [true,"Kitob janirini kiriting"]
   },
   period: {
     type: String,
@@ -33,7 +37,7 @@ description: {
   },
   published_home: {
     type: String,
-    required: true,
+    required:[ true,"nashiryot uyini kiriting"]
   }    
 },
 {
