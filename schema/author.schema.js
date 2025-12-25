@@ -6,7 +6,7 @@ const Author = new Schema(
       type: String,
       required: [true, "full_name talab qilinadi"],
       unique: [false, "full_name unique bo'lishi kerak "],
-      set: (value) => value.trim().toUpperCose(),
+      set: (value) => value.trim(),
       minLength: [3, , "Kamida 3 ta harifdan iborat bo'lishi kerak "],
       match: [/^[a-zA-Z]+$/, "Faqat harif kiriting"],
       trim: true,
@@ -39,7 +39,7 @@ const Author = new Schema(
     gener: {
       type: String,
       required: true,
-      toLowerCase: true,
+      set:value => value.toLowerCase(),
       enum: {
         values: [
           "drama",
@@ -56,7 +56,7 @@ const Author = new Schema(
     period: {
       type: String,
       required: true,
-      toLowerCase: true,
+    set:value => value.toLowerCase(),
       enum: {
         values: [
           "temuriylar davri",

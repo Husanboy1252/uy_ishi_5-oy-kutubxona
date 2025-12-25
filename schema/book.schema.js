@@ -39,10 +39,11 @@ description: {
     type: String,
     required:[ true,"nashiryot uyini kiriting"]
   },
-  // author_id:{
-  //   type: schema.ObjectId,
-  //   ref:""
-  // }  
+  author_id:{
+    type: Schema.ObjectId,
+    ref:"Author",
+    required: true
+  }  
 },
 {
   versionKey: false,
