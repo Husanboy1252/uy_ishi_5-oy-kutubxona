@@ -20,7 +20,7 @@ exports.BookValidator = function (data) {
           "savet davri",
           "mustaqillik davri",).required(),
       published_home: Joi.string().min(4).max(100).required(),
-      author_id: Joi.string().max(20).required(),
+      author_id: Joi.string().max(24).required(),
     })
 
     return schema.validate(data)

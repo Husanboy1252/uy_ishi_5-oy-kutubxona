@@ -4,7 +4,7 @@ const connectDB = require("./config/db.config")
 const authorRouter = require("./router/author.routes")
 const bookRouter = require("./router/book.routes")
 const errorMiddleware = require("./middleware/error.middleware")
-
+const authRouter = require("./router/auth.routes")
 require("dotenv").config()
 
 const app =express()
@@ -19,8 +19,10 @@ connectDB()
 //  router
 app.use(authorRouter)
 app.use(bookRouter)
+app.use(authRouter)
 
 
+// middelleweare
 app.use(errorMiddleware)
 
 

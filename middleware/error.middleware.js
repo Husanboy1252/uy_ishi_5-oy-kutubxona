@@ -3,7 +3,10 @@ const CustomErrorHandler = require("../utils/custom-error-handler")
 module.exports = function( err, req, res, next) {
 try{
  if(err instanceof CustomErrorHandler) {
-        return res.status(err.status).json({message: err.message, error: err.errors})
+        return res
+        .status(err.status)
+        .json({message: err.message, error: err.errors})
+
     }
 if(err.name === "ValidationError"){
     const errorMessages = err.message.split(",")
